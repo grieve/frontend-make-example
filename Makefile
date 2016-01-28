@@ -39,13 +39,13 @@ lint: node_modules/jshint node_modules/jscs
 	$(BIN)/jshint $(JS_SOURCES)
 	$(BIN)/jscs $(JS_SOURCES)
 
-# Ensure dirs are made and then call all of the JS bundles
+# Ensure tools are installed and then call all of the JS bundles
 scripts: node_modules node_modules/webpack $(JS_BUNDLES)
 
-# Ensure dirs are made and then call all of the CSS bundles
+# Ensure tools are installed and then call all of the CSS bundles
 styles: node_modules/node-sass $(CSS_BUNDLES)
 
-# Ensure dirs are made and then call all of the output images
+# Ensure tools are installed and then call all of the output images
 images: node_modules/imagemin-cli $(IMAGE_OUTPUTS)
 
 # HTML and other assets are straight copied
@@ -73,8 +73,7 @@ node_modules:
 
 
 # This is where the real magic happens. % is a pattern matcher in make, so, for
-# example, if we tried to build `bld/css/main.css` it w
-# HTML and other assets are straight copiedould depend upon
+# example, if we tried to build `bld/css/main.css` it would depend upon
 # `src/scss/main.scss`. 
 bld/css/%.css: src/scss/%.scss
 	mkdir -p $(dir $@)
